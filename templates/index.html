@@ -9,7 +9,6 @@
 
   <body>
     <img src="{{url_for('static', filename='images/logo_oncfm_transparent.png')}}">
-    <img src="{{url_for('static', filename='images/banknotes.png')}}" class="img_bottom">
     <br>
     <p id="title">Organisation Nationale de lutte Contre le Faux-Monnayage</p>
     <form action="/predict" method="post" enctype="multipart/form-data">
@@ -26,8 +25,6 @@
       {% if error %}
         <p class=error> {{ error }}</p> 
       {% endif %}
-
-
     </form>
     
 <!--
@@ -51,36 +48,24 @@
   
 
 
-  {%if column_names is defined %}
-  <form action="/save" method = "post">
-    <input type="submit" id="save_button" value="Sauvegarder">
+    {%if column_names is defined %}
+    <form action="/save" method = "post">
+      <input type="submit" id="save_button" value="Sauvegarder">
 
-    <input type="hidden" value="{{column_names}}" name="my_columns">
-    <input type="hidden" value="{{row_data}}" name="my_data">
-  </form>
-  <br>  <br>
-  {{column_names}}
-  {{row_data}}
-  
-  {% endif %}
-
+      <input type="hidden" value="{{column_names}}" name="my_columns">
+      <input type="hidden" value="{{row_data}}" name="my_data">
+    </form>
+    <br>  <br>
+    {{column_names}}
+    {{row_data}}
+    
+    {% endif %}
+    
+    <img src="{{url_for('static', filename='images/banknotes.png')}}" class="img_bottom">
 
   </body>
 
-  <script>
-        function errorMessage() {
-            var error = document.getElementById("error")
-            if (isNaN(document.getElementById("number").value))
-            {
-                 
-                // Changing content and color of content
-                error.textContent = "Please enter a valid number"
-                error.style.color = "red"
-            } else {
-                error.textContent = ""
-            }
-        }
-    </script>
+
 
 
 </html>
