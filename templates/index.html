@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Détection faux billets</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"/>
+    <link rel="icon" href="{{url_for('static', filename='images/favicon.ico')}}" />
+  </head>
+
+  <body>
+    <img src="{{url_for('static', filename='images/logo_oncfm_transparent.png')}}">
+    <img src="{{url_for('static', filename='images/banknotes.png')}}" class="img_bottom">
+    <br>
+    <p id="title">Organisation Nationale de lutte Contre le Faux-Monnayage</p>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+      
+
+      <p id="message">Chargez votre fichier csv puis cliquez sur 'Prédiction' pour afficher les résultats de la détection de faux billets</p>
+      <p>Le fichier doit contenir dans ses 6 premières colonnes les colonnes suivantes :</br>
+      diagonal,height_left,height_right,margin_low,margin_up,length</p>
+
+          
+      <input type="file"  name="file_name" required  accept=".csv"> <!--required field and only csv file-->
+      <input type="submit" class="button" value="Prédiction" id="number"> <!-- class="btn btn-primary btn-block btn-large"-->
+
+      {% if error %}
+        <p class=error> {{ error }}</p> 
+      {% endif %}
+
+
+    </form>
+    
+<!--
+  Useful when I called the same page
+    <table>
+      <tr>
+          {% for col in column_names %}
+          <th>{{col}}</th>
+          {% endfor %}
+      </tr>
+      {% for row in row_data %}
+      <tr>
+          {% for col, row_ in zip(column_names, row) %}
+            <td>{{row_}}</td>
+          {% endfor %}
+      </tr>
+      {% endfor %}
+      <input type="submit" value="Sauvegarder">
+  </table>
+-->
+  
+
+
+  {%if column_names is defined %}
+  <form action="/save" method = "post">
+    <input type="submit" id="save_button" value="Sauvegarder">
+
+    <input type="hidden" value="{{column_names}}" name="my_columns">
+    <input type="hidden" value="{{row_data}}" name="my_data">
+  </form>
+  <br>  <br>
+  {{column_names}}
+  {{row_data}}
+  
+  {% endif %}
+
+
+  </body>
+
+  <script>
+        function errorMessage() {
+            var error = document.getElementById("error")
+            if (isNaN(document.getElementById("number").value))
+            {
+                 
+                // Changing content and color of content
+                error.textContent = "Please enter a valid number"
+                error.style.color = "red"
+            } else {
+                error.textContent = ""
+            }
+        }
+    </script>
+
+
+</html>
+
+
+
+
+  

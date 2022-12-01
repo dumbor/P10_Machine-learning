@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Résultat prédiction faux billets</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"/>
+    <link rel="icon" href="{{url_for('static', filename='images/favicon.ico')}}" />
+  </head>
+
+  <body>
+    <img src="{{url_for('static', filename='images/logo_oncfm_transparent.png')}}">
+    <br>
+    <p id="title">Organisation Nationale de lutte Contre le Faux-Monnayage</p>
+
+
+    <p class="result_msg">Résultat de la prédction</p><!--{{message}}-->
+
+
+    <!--Display result of prediction-->
+    <table>
+      <tr>
+          {% for col in column_names %}
+          <th>{{col}}</th>
+          {% endfor %}
+      </tr>
+      {% for row in row_data %}
+      <tr>
+          {% for col, row_ in zip(column_names, row) %}
+            <td>{{row_}}</td>
+          {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+
+    <div class="display_buttons">
+      <a href = "/">
+        <button class="button">Retour</button>
+      </a>
+      <form action="/save" method = "post">
+        <input type="submit" class="button" value="Sauvegarder">
+        <!-- Retrieve data in hidden field to save the file-->
+        <input type="hidden" value="{{column_names}}" name="my_columns">
+        <input type="hidden" value="{{row_data}}" name="my_data">
+      </form>
+    </div>
+  </body>
+</html>
+
+
+
+
+  

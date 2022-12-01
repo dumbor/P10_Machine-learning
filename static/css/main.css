@@ -1,0 +1,109 @@
+body {
+	background-color: rgb(119, 161, 187);
+	text-align: center;
+
+
+}
+
+p {
+	color : black;
+	font-family : Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 14px;
+	margin : 20px;
+	font-style: italic;
+
+}
+#title{
+	font-size: 26px;
+	color: white;
+	font-style:normal;
+	margin-bottom: 100px;
+	
+}
+#message{
+	font-size: 18px;
+	font-style: normal;
+}
+
+.result_msg{
+	font-size: 18px;
+	font-style: normal;
+	color: black;
+}
+
+img{
+	margin: 30px 0 0 0; /*top side_margin bottom side_margin*/
+	width :250px; /**/
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 40px;
+	color: white;
+}
+
+.img_bottom{
+	
+}
+
+.error{
+	font-style: normal;
+	background-color: palevioletred;
+}
+
+
+.input-file {
+    display: none;
+}
+
+/*input:focus{
+	border : solid 5px #00FFEC;
+}*/
+
+/*. = class, # = id*/
+.button {
+	width :400px ;/**/
+	height : 30px;
+	margin:20px;
+	border: none;
+	font-family : Verdana, Geneva, Tahoma, sans-serif;
+	text-align : center;
+	font-size: 14px;
+	background-color: palevioletred;
+	border-radius: 10px;
+	color:white;
+	width : 200px;
+	height : 30px;
+	text-align : center;
+}
+
+.button:hover {
+	background-color: mediumvioletred;
+	cursor : pointer;
+}
+
+.display_buttons{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+
+table {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-collapse: collapse;
+    width: auto;
+	margin: auto;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+	color: black;
+}
+tr:nth-child(odd) {
+	font-style: normal;
+	color: white;
+}
