@@ -26,7 +26,7 @@ def index():
 @app.route('/predict', methods=["POST"])
 def predict_view():
     try:
-#        flash("Résultat de la prédiction")
+        #flash("Résultat de la prédiction")
         f = request.files['file_name'] # file name from html
         if not f:
             return "No file"
