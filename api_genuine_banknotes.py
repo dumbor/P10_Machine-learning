@@ -71,9 +71,9 @@ def save_view():
     col_list = ast.literal_eval(get_col)
 
     # Create the dataframe to be exported
-    prod_banknotes=pd.DataFrame(data_list, columns=[col_list])
+    prod_banknotes=pd.DataFrame(data_list, columns=[col_list],)
 
-    response = make_response(prod_banknotes.to_csv())
+    response = make_response(prod_banknotes.to_csv(index=False))
     response.headers["Content-Disposition"] = "attachment; filename=prediction_api_result.csv"
     return response
 
